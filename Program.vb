@@ -105,7 +105,7 @@ Module Program
     Sub CountdownBeforeExit(seconds As Integer)
         For i As Integer = seconds To 1 Step -1
             Console.WriteLine($"Exiting in {i} seconds...")
-            Console.WriteLine("Bye!")
+            'Console.WriteLine("Bye!")
             Thread.Sleep(1000) ' Pause for 1 second
         Next
         Log($"Program exited.{vbCrLf}")
