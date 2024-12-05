@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "AutoFileTransfer": {
+      "commandName": "Project",
+      "commandLineArgs": "SRCCLR_NO_GIT=1",
+      "environmentVariables": {
+        "SRCCLR_NO_GIT": "1"
+      }
+    }
+  }
+}
