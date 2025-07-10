@@ -1,5 +1,5 @@
 {
-    "sourcePath": "\\\\10.67.32.10\\ProsperoReports\\UITFProfitability\\",
-    "destinationPath": "C:\\Users\\sbc11579\\Documents\\testingdesdeletelater",
-    "logPath": "TransferLogs1"
+    "sourcePath": "D:\\testingsrcfolder",
+    "destinationPath": "D:\\testingdesdeletelater",
+    "logPath": "\\TransferLogs1"
 }

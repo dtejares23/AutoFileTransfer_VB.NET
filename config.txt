@@ -1,0 +1,3 @@
+sourcePath=D:\testingsrcfolder
+destinationPath=D:\testingdesdeletelater
+logPath=D:\TransferLogs

@@ -23,9 +23,9 @@ Module Program
     Private Const MF_BYCOMMAND As UInteger = &H0UI
 
     ' Variables for paths (read from config)
-    Private sourcePath As String
-    Private destinationPath As String
-    Private logPath As String
+    Private sourcePath As String 'src
+    Private destinationPath As String 'destination
+    Private logPath As String 'logs
 
     Sub Main()
         ' Read configuration file
@@ -43,7 +43,7 @@ Module Program
                 Dim message = "Source path not found or can't connect to server. PLEASE CONTACT IT SUPPORT"
                 Console.WriteLine(message)
                 Log("ERROR: " & message)
-                CountdownBeforeExit(5)
+                CountdownBeforeExit(6)
             End If
 
             If Not Directory.Exists(destinationPath) Then
@@ -127,11 +127,21 @@ Module Program
     End Sub
 
     Function LoadConfig() As Boolean
-        Dim configFilePath As String = "config.json"
+        Dim configFilePath As String = "config.txt"
         Try
             If Not File.Exists(configFilePath) Then Throw New FileNotFoundException("Configuration file not found.")
-            Dim json As String = File.ReadAllText(configFilePath)
-            Dim config = JsonSerializer.Deserialize(Of Dictionary(Of String, String))(json)
+            ' Dim json As String = File.ReadAllText(configFilePath)
+            Dim lines = File.ReadAllLines(configFilePath)
+            Dim config As New Dictionary(Of String, String)
+
+            'Dim config = JsonSerializer.Deserialize(Of Dictionary(Of String, String))(line)
+
+            For Each line In lines
+                If line.Contains("=") Then
+                    Dim parts = line.Split("="c, 2)
+                    config(parts(0).Trim()) = parts(1).Trim()
+                End If
+            Next
 
             sourcePath = config("sourcePath")
             destinationPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), config("destinationPath"))
@@ -142,4 +152,5 @@ Module Program
             Return False
         End Try
     End Function
+
 End Module
